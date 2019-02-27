@@ -1,0 +1,123 @@
+{
+	"info": {
+		"_postman_id": "4d956ae4-52eb-42cd-bb6c-ce015105b075",
+		"name": "be-degit-workshop-identityserver",
+		"description": "Bedigit IdentityServer Workshop",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get discovery data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5000/.well-known/openid-configuration",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						".well-known",
+						"openid-configuration"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "client_id",
+							"value": "ro.client",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "secret",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "alice",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "api1",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/connect/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Use Token",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImMxOTUzMjhiZTdiM2JkZmZmNWMzZGJhYTlkODg4OTYwIiwidHlwIjoiSldUIn0.eyJuYmYiOjE1NTEzMDI1NTUsImV4cCI6MTU1MTMwNjE1NSwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo1MDAwIiwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMC9yZXNvdXJjZXMiLCJhcGkxIl0sImNsaWVudF9pZCI6InJvLmNsaWVudCIsInN1YiI6IjEiLCJhdXRoX3RpbWUiOjE1NTEzMDI1NTUsImlkcCI6ImxvY2FsIiwic2NvcGUiOlsiYXBpMSJdLCJhbXIiOlsicHdkIl19.eQJYGhWAQ11ih48IAHwebeZvPA7ViHelSxkkqbOJjBqMNOrwRGmCgdyserx2QpjNIWPVFF7Ljj2tuiQijsR38urM-2tf6SXFCsPS9Dff4RPdjW89hLgFLSt8WgAcARQ5NoU7IYftPlt-xtFloCAcIOggVaUuP7D7hT8Kxq0oKWqkNLcnfll-hZeAjDD8VFhiEnUpIliqcI8G4k4P4pNH_nNRst6DdzvulVYEZME0HjMXMuPSz8dmZF3BCkT7FrcM5gFOD7Sczj1b1UGahKPloVza6v2VjatWd7a40M2S0JWW2cg8tP9szX3hxIQ-Uefn6uFjv4I0FR-h3289wirdyQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5001/api/identity",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"identity"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
