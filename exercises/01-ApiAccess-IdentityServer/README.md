@@ -293,7 +293,7 @@ dotnet add package IdentityModel
 
 ### Step 2 
 
-Configure the console to request an access tokens from our identity server and use it to call your Api. Add the following code in the main methode in Program.cs: 
+Configure the console to request an access tokens from our identity server and use it to call our Api. Add the following code in the main method in Program.cs: 
 
 ```C#
 ...
@@ -341,6 +341,7 @@ Configure the console to request an access tokens from our identity server and u
                 Console.WriteLine(JArray.Parse(content));
             }
 ...
+```
 
 ## Recap
 
