@@ -24,11 +24,11 @@ None of the applications in the project contain any authentication or authorizat
 
 1. Open the solution file for the workshop. 
 2. Compile and start the api. 
-3. Import the [Postman collection](postman/IdentityServer.postman_collection.json) to postman
+3. Import the [Postman collection](postman/be-degit-workshop-identityserver.postman_collection.json) to postman
 4. Try getting values.
 
 ### To the exercises
 
-When everything is working, you can move on to the [First exercise](exercises/01-ApiAccess-ClientCredentials)
+When everything is working, you can move on to the [First exercise](Exercises/01-ApiAccess-IdentityServer)
 
 
