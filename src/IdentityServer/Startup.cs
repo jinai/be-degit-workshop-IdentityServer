@@ -34,7 +34,7 @@ namespace IdentityServer
 
             app.UseStaticFiles();
 
-            app.UseMvc();
+            app.UseMvcWithDefaultRoute();
         }
     }
 }

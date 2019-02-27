@@ -12,7 +12,7 @@ namespace MvcClient.Controllers
             return View();
         }
 
-        [Authorize]
+      
         public IActionResult Secure()
         {
             ViewData["Message"] = "Secure page.";
@@ -22,7 +22,8 @@ namespace MvcClient.Controllers
 
         public IActionResult Logout()
         {
-            return SignOut("Cookies", "oidc");
+            return null;
+            //return SignOut("Cookies", "oidc");
         }
 
         public IActionResult Error()
