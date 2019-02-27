@@ -1,4 +1,4 @@
-# Exercise 2: Login page for Statistics Web and Admin web
+# Exercise 2: Login page for MVC web application
 
 In this exercise we are going to add an login page to our identity server. This is used to authenticate users for our web MVC application. To solve this we are going to use OpenID Connect Implicit flow. 
 
@@ -54,13 +54,13 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 To verify that we have an UI, compile and start your identity server and navigate to: http://localhost:5000
 
-## Exercise 2.2: Add Implict flow login for Statistics web  
+## Exercise 2.2: Add Implict flow login for MVC web  
 
 With the UI in place we can now add an OpenId Implict flow client configuration in our identity server for the MVC web.
 
 ### Step 1
 
-Now we need to add a new client in the identity server. This client will contain more configuration, most important how to navigate between the identity server and the Statistics web.
+Now we need to add a new client in the identity server. This client will contain more configuration, most important how to navigate between the identity server and the MVC web.
 
 ```C#
 new Client
@@ -139,7 +139,7 @@ TestUsers should not be used in production. If you want user control, you should
 
 ### Step 4
 
-Now we are going to configure the Statistics web to use OpenID Connect. First we going to "fix" Microsoft's OpenIdConnect handler. More info here:
+Now we are going to configure the MVC web to use OpenID Connect. First we going to "fix" Microsoft's OpenIdConnect handler. More info here:
 https://leastprivilege.com/2017/11/15/missing-claims-in-the-asp-net-core-2-openid-connect-handler/
 
 ```C#
@@ -196,7 +196,7 @@ RequireConsent = false,
 
 ### Step 6
 
-If you tried to click the logout button in the statistics, you might have noticed that it does not work. We have to add an logout action in the `HomeController` to handle logout for both the mvc web and the identity server.
+If you tried to click the logout button in the MVC web, you might have noticed that it does not work. We have to add an logout action in the `HomeController` to handle logout for both the mvc web and the identity server.
 
 ```C#
 public IActionResult Logout()
