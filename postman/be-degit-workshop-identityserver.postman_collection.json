@@ -118,6 +118,21 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Get Token Client Credentilas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
 		}
 	]
 }
