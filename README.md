@@ -1,1 +1,1 @@
-be-degit-workshom-identityServer
+be-degit-workshop-identityServer
