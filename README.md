@@ -29,6 +29,6 @@ None of the applications in the project contain any authentication or authorizat
 
 ### To the exercises
 
-When everything is working, you can move on to the [First exercise](Exercices/01-ApiAccess-IdentityServer)
+When everything is working, you can move on to the [First exercise](exercises/01-ApiAccess-IdentityServer)
 
 
