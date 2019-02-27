@@ -279,4 +279,73 @@ If you have run the Api, you should now get a 200 OK with claims:
 ]
 ```
 
+## Exercise 1.4: Modify the console application and use the Api
+
+In this part we will use a console application to consume the api. We are going to use the nuget package supplied by the IdentityServer4 team, `IdentityModel`.
+
+### Step 1
+
+Install the IdentityModel nuget package in the Api project
+
+```
+dotnet add package IdentityModel
+```
+
+### Step 2 
+
+Configure the console to request an access tokens from our identity server and use it to call your Api. Add the following code in the main methode in Program.cs: 
+
+```C#
+...
+            // discover endpoints from metadata
+            var client = new HttpClient();
+
+            var disco = await client.GetDiscoveryDocumentAsync("http://localhost:5000");
+            if (disco.IsError)
+            {
+                Console.WriteLine(disco.Error);
+                return;
+            }
+
+            // request token
+            var tokenResponse = await client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
+            {
+                Address = disco.TokenEndpoint,
+                ClientId = "console",
+                ClientSecret = "secret",
+
+                Scope = "api1"
+            });
+
+            if (tokenResponse.IsError)
+            {
+                Console.WriteLine(tokenResponse.Error);
+                return;
+            }
+
+            Console.WriteLine(tokenResponse.Json);
+            Console.WriteLine("\n\n");
+
+            // call api
+            var apiClient = new HttpClient();
+            apiClient.SetBearerToken(tokenResponse.AccessToken);
+
+            var response = await apiClient.GetAsync("http://localhost:5001/api/identity");
+            if (!response.IsSuccessStatusCode)
+            {
+                Console.WriteLine(response.StatusCode);
+            }
+            else
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                Console.WriteLine(JArray.Parse(content));
+            }
+...
+
+## Recap
+
+We now have a working client credentials flow for our Apis using IdentityServer4. In the next exercise we going to add an signin flow, [here](../02-LoginPage-ImplicitFlow)
+
+
+
 
