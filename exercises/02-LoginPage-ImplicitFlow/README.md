@@ -211,3 +211,7 @@ public IActionResult Logout()
 ```
 
 Here we signout of Auth Cookie scheme and the triggers the signout on the OpenId Connect Handler. This will redirect the browser so that the user signs out of the identity server aswell.
+
+## Recap
+
+We now have a working Implicit flow for our MVC WEB using IdentityServer4. In the next exercise we going to see the Hybrid flow, [here](../03-BackendApiAccess-HybridFlow)

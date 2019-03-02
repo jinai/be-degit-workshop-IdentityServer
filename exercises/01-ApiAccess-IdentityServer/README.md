@@ -345,7 +345,7 @@ Configure the console to request an access tokens from our identity server and u
 
 ## Recap
 
-We now have a working client credentials flow for our Apis using IdentityServer4. In the next exercise we going to add an signin flow, [here](../02-LoginPage-ImplicitFlow)
+We now have a working client credentials flow for our Api using IdentityServer4. In the next exercise we going to add an signin flow, [here](../02-LoginPage-ImplicitFlow)
 
 
 
