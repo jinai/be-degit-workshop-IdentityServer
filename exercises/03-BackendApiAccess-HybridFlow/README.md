@@ -1,6 +1,6 @@
-# Exercise 3: Backend access for Admin web
+# Exercise 3: Backend access for MVC web
 
-In this exercise we are going to configure so that our MVC Web can access our api backend service. To do this we are going to "upgrade" our client for the Admin web to the Hybrid flow. This means that we will include an authorization code in our response along with the id_token.
+In this exercise we are going to configure so that our MVC Web can access our api backend service. To do this we are going to "upgrade" our client for the MVC web to the Hybrid flow. This means that we will include an authorization code in our response along with the id_token.
 
 ## Exercise 3.1: Modify the client in Identity Server
 
@@ -39,7 +39,7 @@ new Client
 
 There are 3 important differences compared to Implicit:
 * AllowedGrantType is changed to support HybridAndClientCredentials.
-* We added a client secret to the client. This is used by the Admin web when it requests access tokens.
+* We added a client secret to the client. This is used by the MVC web when it requests access tokens.
 * We added the scope `api1` to our allowed scopes, which is the ApiResource for our api. 
 
 ## Exercise 3.2: Update the configuration in MVC web
@@ -82,7 +82,7 @@ It is also possible to configure IdentityServer4 to always send the user claims 
 
 ### Step 2
 
-Now we need to use our access token in our call to the api backend. In our MVC web project there is an `AdminHttpService` that handles all calls to the backend. It is prepared with an `IHttpContextAccessor` service, so that we can access our token from the HttpContext. Modify the `PostAsync` method:
+Now we need to use our access token in our call to the api backend. In our MVC web project there is an `MvcHttpService` that handles all calls to the backend. It is prepared with an `IHttpContextAccessor` service, so that we can access our token from the HttpContext. Modify the `PostAsync` method:
 
 ```C#
 var accessToken = await _httpContextAccessor.HttpContext.GetTokenAsync("access_token");
