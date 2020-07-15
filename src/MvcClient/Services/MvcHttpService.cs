@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Http;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -37,8 +36,19 @@ namespace MvcClient.Services
 
         public async Task<HttpResponseMessage> PostAsync(string requestUri, string content)
         {
+            //var requestMessage = new HttpRequestMessage(HttpMethod.Post, requestUri);
+
+            //requestMessage.Content = new StringContent(content, Encoding.UTF8, "application/json");
+
+            //var response = await _httpClient.SendAsync(requestMessage);
+
+            //return response;
+
+            var accessToken = await _httpContextAccessor.HttpContext.GetTokenAsync("access_token");
+
             var requestMessage = new HttpRequestMessage(HttpMethod.Post, requestUri);
 
+            requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
             requestMessage.Content = new StringContent(content, Encoding.UTF8, "application/json");
 
             var response = await _httpClient.SendAsync(requestMessage);

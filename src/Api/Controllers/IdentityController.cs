@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Authorization;
 namespace Api.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
+    [ApiController]
     public class IdentityController : ControllerBase
     {
         public IActionResult Get()
